@@ -991,7 +991,7 @@ setTimeout(() => {
     
     // Mostrar notificación de música
     setTimeout(() => {
-        showSpecialNotification('🎵 La música especial está lista para ti, mi amor', 'love');
+        showSpecialNotification('🎵 La música especial está lista para ti, mi princesa', 'love');
     }, 500);
 }, 2000);
 
