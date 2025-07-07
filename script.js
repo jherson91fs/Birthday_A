@@ -397,7 +397,7 @@ function flipCard(card) {
                 
                 if (matchedPairs === 8) {
                     setTimeout(() => {
-                        alert('¡Felicitaciones! Has completado el juego de memoria. ¡Eres increíble! 🎉');
+                        showSpecialNotification('¡Felicitaciones! Un jueguito muy sencillo para ti hermosa e inteligente ¡Eres increíble! 🎉', 'success');
                     }, 500);
                 }
                 
