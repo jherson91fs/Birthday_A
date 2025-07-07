@@ -47,12 +47,12 @@ const surprises = {
                 <p>Estas canciones me recuerdan a ti cada vez que las escucho...</p>
                 <div class="song-player">
                     <h4>🎵 Primera Canción</h4>
-                    <audio controls>
+                    <audio controls class="surprise-audio" data-song="1">
                         <source src="Musica1_se.mp3" type="audio/mpeg">
                         Tu navegador no soporta audio.
                     </audio>
                     <h4>🎁 Segunda Canción</h4>
-                    <audio controls>
+                    <audio controls class="surprise-audio" data-song="2">
                         <source src="Musica3_regalo.mp3" type="audio/mpeg">
                         Tu navegador no soporta audio.
                     </audio>
@@ -477,6 +477,11 @@ function setupSurprises() {
                 modalContent.innerHTML = surprise.content;
                 modal.style.display = 'block';
                 
+                // Configurar control de audio para sorpresa musical
+                if (surpriseId === '1') {
+                    setupAudioControls();
+                }
+                
                 // Crear confeti para la sorpresa
                 createConfetti();
             }
@@ -486,13 +491,62 @@ function setupSurprises() {
     // Cerrar modal
     closeBtn.addEventListener('click', () => {
         modal.style.display = 'none';
+        // Pausar todos los audios al cerrar
+        pauseAllAudios();
     });
     
     window.addEventListener('click', (e) => {
         if (e.target === modal) {
             modal.style.display = 'none';
+            // Pausar todos los audios al cerrar
+            pauseAllAudios();
         }
     });
+}
+
+// Función para configurar controles de audio
+function setupAudioControls() {
+    const audios = document.querySelectorAll('.surprise-audio');
+    const backgroundMusic = document.getElementById('background-music');
+    
+    audios.forEach(audio => {
+        audio.addEventListener('play', function() {
+            // Pausar música de fondo
+            if (backgroundMusic) {
+                backgroundMusic.pause();
+            }
+            
+            // Pausar otros audios de sorpresa
+            audios.forEach(otherAudio => {
+                if (otherAudio !== this) {
+                    otherAudio.pause();
+                }
+            });
+        });
+        
+        audio.addEventListener('pause', function() {
+            // Reanudar música de fondo si no hay otros audios reproduciéndose
+            const anyPlaying = Array.from(audios).some(a => !a.paused);
+            if (!anyPlaying && backgroundMusic) {
+                backgroundMusic.play().catch(e => console.log('No se pudo reanudar música de fondo'));
+            }
+        });
+    });
+}
+
+// Función para pausar todos los audios
+function pauseAllAudios() {
+    const audios = document.querySelectorAll('.surprise-audio');
+    const backgroundMusic = document.getElementById('background-music');
+    
+    audios.forEach(audio => {
+        audio.pause();
+    });
+    
+    // Reanudar música de fondo
+    if (backgroundMusic) {
+        backgroundMusic.play().catch(e => console.log('No se pudo reanudar música de fondo'));
+    }
 }
 
 // Navegación móvil
@@ -571,6 +625,9 @@ function startLetterTyping() {
                 // Agregar efecto de finalización
                 letterText.style.animation = 'glow 2s ease-in-out';
                 console.log('Efecto de escritura completado');
+                
+                // Mostrar notificación romántica
+                showSpecialNotification('💌 Mi carta especial está completa para ti, Angie', 'romantic');
             }, 500);
         }
     }
@@ -696,47 +753,251 @@ function setupMusicControls() {
     });
 }
 
-// Función para mostrar notificaciones especiales
-function showSpecialNotification(message, type = 'info') {
+// Función para mostrar notificaciones románticas especiales
+function showSpecialNotification(message, type = 'romantic') {
     const notification = document.createElement('div');
-    notification.className = `notification notification-${type}`;
-    notification.textContent = message;
+    notification.className = `romantic-notification notification-${type}`;
+    
+    // Definir iconos y colores según el tipo
+    const notificationConfig = {
+        romantic: {
+            icon: '💕',
+            bgColor: 'linear-gradient(135deg, #ff6b9d 0%, #e91e63 100%)',
+            borderColor: '#ff6b9d',
+            shadowColor: 'rgba(255, 107, 157, 0.4)'
+        },
+        success: {
+            icon: '✨',
+            bgColor: 'linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%)',
+            borderColor: '#4ecdc4',
+            shadowColor: 'rgba(78, 205, 196, 0.4)'
+        },
+        love: {
+            icon: '💖',
+            bgColor: 'linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%)',
+            borderColor: '#ff9a9e',
+            shadowColor: 'rgba(255, 154, 158, 0.4)'
+        },
+        birthday: {
+            icon: '🎂',
+            bgColor: 'linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)',
+            borderColor: '#a8edea',
+            shadowColor: 'rgba(168, 237, 234, 0.4)'
+        }
+    };
+    
+    const config = notificationConfig[type] || notificationConfig.romantic;
+    
+    notification.innerHTML = `
+        <div class="notification-content">
+            <div class="notification-icon">${config.icon}</div>
+            <div class="notification-text">
+                <div class="notification-message">${message}</div>
+                <div class="notification-hearts">
+                    <i class="fas fa-heart"></i>
+                    <i class="fas fa-heart"></i>
+                    <i class="fas fa-heart"></i>
+                </div>
+            </div>
+        </div>
+        <div class="notification-progress"></div>
+    `;
     
     notification.style.cssText = `
         position: fixed;
         top: 20px;
         right: 20px;
-        background: ${type === 'success' ? '#4ecdc4' : '#ff6b9d'};
+        background: ${config.bgColor};
         color: white;
-        padding: 1rem 2rem;
-        border-radius: 10px;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        padding: 0;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px ${config.shadowColor}, 0 5px 15px rgba(0,0,0,0.2);
         z-index: 3000;
-        transform: translateX(400px);
-        transition: transform 0.3s ease;
+        transform: translateX(400px) scale(0.8);
+        transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        border: 2px solid ${config.borderColor};
+        backdrop-filter: blur(10px);
+        min-width: 350px;
+        max-width: 450px;
+        overflow: hidden;
     `;
     
     document.body.appendChild(notification);
     
+    // Agregar estilos CSS para la notificación
+    const style = document.createElement('style');
+    style.textContent = `
+        .romantic-notification .notification-content {
+            display: flex;
+            align-items: center;
+            padding: 1.5rem;
+            gap: 15px;
+        }
+        
+        .romantic-notification .notification-icon {
+            font-size: 2rem;
+            animation: notification-bounce 2s ease-in-out infinite;
+        }
+        
+        .romantic-notification .notification-text {
+            flex: 1;
+        }
+        
+        .romantic-notification .notification-message {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+        
+        .romantic-notification .notification-hearts {
+            display: flex;
+            gap: 5px;
+        }
+        
+        .romantic-notification .notification-hearts i {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.8);
+            animation: heart-beat 1.5s ease-in-out infinite;
+        }
+        
+        .romantic-notification .notification-hearts i:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+        
+        .romantic-notification .notification-hearts i:nth-child(3) {
+            animation-delay: 1s;
+        }
+        
+        .romantic-notification .notification-progress {
+            height: 3px;
+            background: rgba(255, 255, 255, 0.3);
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .romantic-notification .notification-progress::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.8);
+            animation: progress-shrink 4s linear forwards;
+        }
+        
+        @keyframes notification-bounce {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        @keyframes progress-shrink {
+            from { transform: translateX(0); }
+            to { transform: translateX(-100%); }
+        }
+        
+        @keyframes heart-beat {
+            0%, 100% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.2); opacity: 1; }
+        }
+        
+        @media (max-width: 768px) {
+            .romantic-notification {
+                min-width: 280px;
+                max-width: 320px;
+                right: 10px;
+                left: 10px;
+                top: 10px;
+                border-radius: 15px;
+            }
+            
+            .romantic-notification .notification-content {
+                padding: 1rem;
+                gap: 10px;
+            }
+            
+            .romantic-notification .notification-icon {
+                font-size: 1.5rem;
+            }
+            
+            .romantic-notification .notification-message {
+                font-size: 0.95rem;
+                line-height: 1.3;
+            }
+            
+            .romantic-notification .notification-hearts {
+                gap: 3px;
+            }
+            
+            .romantic-notification .notification-hearts i {
+                font-size: 0.7rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .romantic-notification {
+                min-width: 250px;
+                max-width: 280px;
+                right: 5px;
+                left: 5px;
+                top: 5px;
+                border-radius: 12px;
+            }
+            
+            .romantic-notification .notification-content {
+                padding: 0.8rem;
+                gap: 8px;
+            }
+            
+            .romantic-notification .notification-icon {
+                font-size: 1.3rem;
+            }
+            
+            .romantic-notification .notification-message {
+                font-size: 0.9rem;
+                line-height: 1.2;
+            }
+            
+            .romantic-notification .notification-hearts {
+                gap: 2px;
+            }
+            
+            .romantic-notification .notification-hearts i {
+                font-size: 0.6rem;
+            }
+        }
+    `;
+    
+    document.head.appendChild(style);
+    
+    // Animación de entrada
     setTimeout(() => {
-        notification.style.transform = 'translateX(0)';
+        notification.style.transform = 'translateX(0) scale(1)';
     }, 100);
     
+    // Animación de salida
     setTimeout(() => {
-        notification.style.transform = 'translateX(400px)';
-        setTimeout(() => notification.remove(), 300);
-    }, 3000);
+        notification.style.transform = 'translateX(400px) scale(0.8)';
+        setTimeout(() => notification.remove(), 500);
+    }, 4000);
 }
 
 // Inicializar efectos adicionales
 setTimeout(() => {
     addFloatingElements();
     playBackgroundMusic();
+    
+    // Mostrar notificación de música
+    setTimeout(() => {
+        showSpecialNotification('🎵 La música especial está lista para ti, mi amor', 'love');
+    }, 500);
 }, 2000);
 
-// Mostrar notificación de bienvenida
+// Mostrar notificación de bienvenida romántica
 setTimeout(() => {
-    showSpecialNotification('¡Bienvenida a tu página especial de cumpleaños! 💖', 'success');
+    showSpecialNotification('¡Bienvenida a tu página especial de cumpleaños, mi princesa Angie! 💖', 'romantic');
 }, 1000);
 
 // Efectos de partículas en el fondo
@@ -1061,6 +1322,9 @@ function startPoemTyping() {
                 
                 // Crear partículas especiales para el poema
                 createPoemParticles();
+                
+                // Mostrar notificación romántica
+                showSpecialNotification('💕 Mi poema especial está listo para ti, mi princesa', 'love');
             }, 300);
         }
     }
