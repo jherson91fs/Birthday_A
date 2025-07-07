@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎉 ¡Feliz Cumpleaños! 🎂 - Página Especial</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navegación -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">🎂</div>
+            <ul class="nav-menu">
+                <li><a href="#inicio" class="nav-link">Inicio</a></li>
+                <li><a href="#carta" class="nav-link">Carta</a></li>
+                <li><a href="#poemas" class="nav-link">Poemas</a></li>
+                <li><a href="#juego" class="nav-link">Juego</a></li>
+                <li><a href="memories-locked.html" class="nav-link">Recuerdos</a></li>
+                <li><a href="#sorpresas" class="nav-link">Sorpresas</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sección de Inicio - Felicitación Animada -->
+    <section id="inicio" class="hero">
+        <div class="hero-content">
+            <div class="birthday-message">
+                <h1 class="animated-text">¡Feliz Cumpleaños!</h1>
+                <h2 class="age-text">🎂 ¡20 Años! 🎂</h2>
+                <p class="subtitle">Que este día esté lleno de alegría, risas y momentos inolvidables</p>
+                <div class="floating-hearts">
+                    <i class="fas fa-heart"></i>
+                    <i class="fas fa-heart"></i>
+                    <i class="fas fa-heart"></i>
+                    <i class="fas fa-heart"></i>
+                    <i class="fas fa-heart"></i>
+                </div>
+            </div>
+            
+            <!-- Botón para ir a recuerdos -->
+            <div class="memories-button-container">
+                <button class="memories-btn" onclick="goToMemories()">
+                    <i class="fas fa-camera"></i>
+                    <span>Ver Nuestros Recuerdos</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                <p class="memories-hint">📸 Explora nuestros momentos especiales juntos</p>
+            </div>
+        </div>
+        
+        <!-- Efectos de confeti -->
+        <div class="confetti-container"></div>
+        
+        <!-- Botón para continuar -->
+        <div class="scroll-indicator">
+            <a href="#carta" class="scroll-btn">
+                <i class="fas fa-chevron-down"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Sección de la Carta Digital -->
+    <section id="carta" class="letter-section">
+        <div class="container">
+            <div class="letter-container">
+                <div class="letter-paper">
+                    <div class="letter-header">
+                        <h2>💌 Mi Carta Especial</h2>
+                        <div class="letter-date" id="letter-date"></div>
+                    </div>
+                    <div class="letter-content">
+                        <p class="typing-text" id="letter-text">
+                            Mi niña Angie, aunque ya no eres niña xD, pero aun asi eres mi niña y princesa Angie 💖
+                            
+                            ¡Feliz cumpleaños número 20! 🎂🎉 En este día tan especial, quiero que sepas lo mucho que significas para mí. Cada momento contigo ha sido un regalo, cada risa compartida un tesoro, y cada día a tu lado una bendición, aunque hayan sido pocos momentos, cada uno de ellos ha sido especial.
+                            
+                            Eres una persona increíble que ilumina mis días con tu sonrisa, alegras mi corazón con solo un mensaje. Tu me haces mejor persona cada día.
+                            
+                            Que estos 20 años sean solo el comienzo de una vida llena de alegría, risas, aventuras y momentos inolvidables. Que cada deseo se cumpla y que este nuevo año de vida esté lleno de todo lo que mereces.
+                            
+                            Me gustas mucho y espero que algún día pueda celebrarlo junto a ti. Eres muy especial para mí.
+                            
+                            Con mucho cariño, tu personita especial 💖
+                        </p>
+                    </div>
+                    <div class="letter-footer">
+                        <div class="hearts-animation">
+                            <i class="fas fa-heart"></i>
+                            <i class="fas fa-heart"></i>
+                            <i class="fas fa-heart"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección del Juego de Memoria -->
+    <section id="juego" class="game-section">
+        <div class="container">
+            <h2 class="section-title">🎮 Jueguito para que te diviertas</h2>
+            <div class="game-info">
+                <div class="score">Puntuación: <span id="score">0</span></div>
+                <div class="moves">Movimientos: <span id="moves">0</span></div>
+                <button id="reset-game" class="reset-btn">Reiniciar Juego</button>
+            </div>
+            <div class="memory-game" id="memory-game">
+                <!-- Las tarjetas se generarán con JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Poemas -->
+    <section id="poemas" class="poems-section">
+        <div class="container">
+            <h2 class="section-title">💌 Poemas para mi Princesa</h2>
+            <div class="poems-container">
+                <div class="poem-card">
+                    <div class="poem-header">
+                        <h3>🎂 Para Angie en sus 20 años</h3>
+                        <div class="poem-date" id="poem-date"></div>
+                    </div>
+                    <div class="poem-content">
+                        <!-- Botón para iniciar el poema -->
+                        <div class="poem-start-container" id="poem-start-container">
+                            <div class="poem-start-icon">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <h3>💌 Un Poema Especial para Ti</h3>
+                            <p>Haz clic para descubrir el poema que escribí especialmente para ti</p>
+                            <button class="poem-start-btn" onclick="startPoemAnimation()">
+                                <i class="fas fa-play"></i>
+                                <span>Leer Poema</span>
+                                <i class="fas fa-heart"></i>
+                            </button>
+                        </div>
+                        
+                        <!-- Contenedor del poema (inicialmente oculto) -->
+                        <div class="poem-text-container" id="poem-text-container" style="display: none;">
+                                                    <div class="poem-text" id="poem-text" style="opacity: 0;">
+                            Mi niña Angie, mi princesa especial,
+                            En este día que cumples veinte años,
+                            Quiero decirte que eres mi ideal,
+                            Y que contigo se llenan mis sueños.
+
+                            Tu sonrisa ilumina mi corazón,
+                            Como el sol que brilla en la mañana,
+                            Eres mi mayor inspiración,
+                            Mi dulce y hermosa compañera.
+
+                            Aunque la distancia nos separe,
+                            En mi mente siempre estás presente,
+                            Tu recuerdo nunca se desvanece,
+                            Eres mi amor más ferviente.
+
+                            Que estos veinte años sean el inicio,
+                            De una vida llena de alegría,
+                            Que cada día sea un servicio,
+                            Para hacerte feliz cada día.
+
+                            Te quiero mucho, mi princesa Angie,
+                            Eres el amor de mi vida entera,
+                            Que Dios te bendiga siempre,
+                            Y que seas muy feliz, mi compañera.
+                        </div>
+                            <div class="poem-footer">
+                                <div class="poem-hearts">
+                                    <i class="fas fa-heart"></i>
+                                    <i class="fas fa-heart"></i>
+                                    <i class="fas fa-heart"></i>
+                                </div>
+                                <p class="poem-signature">Con todo mi amor, tu personita especial 💖</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Sorpresas -->
+    <section id="sorpresas" class="surprises-section">
+        <div class="container">
+            <h2 class="section-title">🎁 Sorpresas Especiales</h2>
+            <div class="surprises-grid">
+                <div class="surprise-card" data-surprise="1">
+                    <div class="surprise-icon">🎵</div>
+                    <h3>Musicas que me recuerdan a ti</h3>
+                    <p>Haz clic para descubrir</p>
+                </div>
+                
+                <div class="surprise-card" data-surprise="2">
+                    <div class="surprise-icon">💝</div>
+                    <h3>Mensaje Especial</h3>
+                    <p>Haz clic para descubrir</p>
+                </div>
+                
+                <div class="surprise-card" data-surprise="3">
+                    <div class="surprise-icon">🌟</div>
+                    <h3>Deseo Mágico</h3>
+                    <p>Haz clic para descubrir</p>
+                </div>
+                
+                <div class="surprise-card" data-surprise="4">
+                    <div class="surprise-icon">🎊</div>
+                    <h3>Celebración</h3>
+                    <p>Haz clic para descubrir</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal para sorpresas -->
+    <div id="surprise-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="modal-content"></div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>Hecho con ❤️ para el cumpleaños más especial</p>
+            <div class="footer-hearts">
+                <i class="fas fa-heart"></i>
+                <i class="fas fa-heart"></i>
+                <i class="fas fa-heart"></i>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Audio para música de fondo -->
+    <audio id="background-music" loop>
+        <source src="Musica2_infinito.mp3" type="audio/mpeg">
+    </audio>
+    
+    <!-- Controles de música -->
+    <div class="music-controls">
+        <button id="music-toggle" class="music-btn">
+            <i class="fas fa-play"></i>
+        </button>
+        <div class="music-info">
+            <span class="song-title">Canción Especial</span>
+            <span class="song-artist">Para Ti</span>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📸 Nuestros Recuerdos - Página de Memoria</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navegación -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">📸</div>
+            <ul class="nav-menu">
+                <li><a href="birthday.html" class="nav-link">Inicio</a></li>
+                <li><a href="#album" class="nav-link">Álbum</a></li>
+                <li><a href="#galeria" class="nav-link">Galería</a></li>
+                <li><a href="index.html" class="nav-link">Contador</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header de la página -->
+    <section class="memories-header">
+        <div class="container">
+            <h1 class="memories-title">📸 Nuestros Recuerdos Especiales</h1>
+            <p class="memories-subtitle">Una colección de momentos que hemos compartido juntos</p>
+            <div class="memories-hearts">
+                <i class="fas fa-heart"></i>
+                <i class="fas fa-heart"></i>
+                <i class="fas fa-heart"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección del Álbum de Recuerdos -->
+    <section id="album" class="album-section">
+        <div class="container">
+            <h2 class="section-title">📸 Momentos Especiales</h2>
+            <p class="section-description">Una línea de tiempo de nuestros recuerdos más preciados</p>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Primer Encuentro</div>
+                        <div class="timeline-image">
+                            <img src="fotos/primer-encuentro.jpg" alt="Primer encuentro" onerror="this.src='https://via.placeholder.com/300x200/ff6b9d/ffffff?text=Primer+Encuentro'">
+                        </div>
+                        <h3>El día que nos conocimos</h3>
+                        <p>Recuerdo perfectamente el momento en que nos conocimos... ¡Fue el inicio de una bonita amistad! ✨</p>
+                        <div class="timeline-tags">
+                            <span class="tag">Primera vez</span>
+                            <span class="tag">Especial</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Primera Conversación</div>
+                        <div class="timeline-image">
+                            <img src="fotos/primera-conversacion.jpg" alt="Primera conversación" onerror="this.src='https://via.placeholder.com/300x200/4ecdc4/ffffff?text=Primera+Conversación'">
+                        </div>
+                        <h3>Una charla especial</h3>
+                        <p>Esa primera conversación que me hizo darme cuenta de lo especial que eres... 💕</p>
+                        <div class="timeline-tags">
+                            <span class="tag">Conversación</span>
+                            <span class="tag">Conexión</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Nuestro Primer Paseo</div>
+                        <div class="timeline-image">
+                            <img src="fotos/primer-paseo.jpg" alt="Primer paseo" onerror="this.src='https://via.placeholder.com/300x200/45b7d1/ffffff?text=Primer+Paseo'">
+                        </div>
+                        <h3>Aventuras juntos</h3>
+                        <p>Nuestro primer paseo juntos... ¡Qué recuerdos tan hermosos! 🌟</p>
+                        <div class="timeline-tags">
+                            <span class="tag">Aventura</span>
+                            <span class="tag">Primera vez</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Momentos Especiales</div>
+                        <div class="timeline-image">
+                            <img src="fotos/momentos-especiales.jpg" alt="Momentos especiales" onerror="this.src='https://via.placeholder.com/300x200/96c93d/ffffff?text=Momentos+Especiales'">
+                        </div>
+                        <h3>Risas y alegría</h3>
+                        <p>Todos esos momentos llenos de risas, alegría y felicidad... ¡Eres muy especial! 💖</p>
+                        <div class="timeline-tags">
+                            <span class="tag">Risas</span>
+                            <span class="tag">Alegría</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Celebración Especial</div>
+                        <div class="timeline-video">
+                            <video controls>
+                                <source src="videos/video-especial.mp4" type="video/mp4">
+                                Tu navegador no soporta videos.
+                            </video>
+                        </div>
+                        <h3>Un video especial para ti</h3>
+                        <p>Un pequeño regalo en video para recordar nuestros mejores momentos... 🎬💕</p>
+                        <div class="timeline-tags">
+                            <span class="tag">Video</span>
+                            <span class="tag">Especial</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Espacio para futuros recuerdos -->
+                <div class="timeline-item future-memory">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Próximamente...</div>
+                        <div class="timeline-image future-placeholder">
+                            <i class="fas fa-plus"></i>
+                            <p>Nuevo recuerdo</p>
+                        </div>
+                        <h3>Más momentos por venir</h3>
+                        <p>Aquí se agregarán más recuerdos especiales que compartiremos juntos... 🌟</p>
+                        <div class="timeline-tags">
+                            <span class="tag">Futuro</span>
+                            <span class="tag">Esperando</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Galería de Fotos -->
+    <section id="galeria" class="gallery-section">
+        <div class="container">
+            <h2 class="section-title">📸 Galería de Nuestros Momentos</h2>
+            <p class="section-description">Una colección de fotos que capturan nuestros mejores momentos juntos</p>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item" data-caption="Nuestro primer encuentro 💕">
+                    <img src="fotos/primer-encuentro.jpg" alt="Momento especial 1" onerror="this.src='https://via.placeholder.com/300x300/ff6b9d/ffffff?text=Foto+1'">
+                </div>
+                <div class="gallery-item" data-caption="Risas juntos 😄">
+                    <img src="fotos/risas-juntos.jpg" alt="Momento especial 2" onerror="this.src='https://via.placeholder.com/300x300/4ecdc4/ffffff?text=Foto+2'">
+                </div>
+                <div class="gallery-item" data-caption="Nuestro primer paseo ✈️">
+                    <img src="fotos/primer-paseo.jpg" alt="Momento especial 3" onerror="this.src='https://via.placeholder.com/300x300/45b7d1/ffffff?text=Foto+3'">
+                </div>
+                <div class="gallery-item" data-caption="Celebrando juntos 🎉">
+                    <img src="fotos/celebrando.jpg" alt="Momento especial 4" onerror="this.src='https://via.placeholder.com/300x300/96c93d/ffffff?text=Foto+4'">
+                </div>
+                <div class="gallery-item" data-caption="Momentos especiales 💖">
+                    <img src="fotos/momentos-especiales.jpg" alt="Momento especial 5" onerror="this.src='https://via.placeholder.com/300x300/ff9a9e/ffffff?text=Foto+5'">
+                </div>
+                <div class="gallery-item" data-caption="Aventuras juntos 🌟">
+                    <img src="fotos/aventuras.jpg" alt="Momento especial 6" onerror="this.src='https://via.placeholder.com/300x300/a8edea/ffffff?text=Foto+6'">
+                </div>
+
+                <!-- Espacios para futuras fotos -->
+                <div class="gallery-item future-photo" data-caption="Nueva foto por venir ✨">
+                    <div class="future-placeholder">
+                        <i class="fas fa-camera"></i>
+                        <p>Nueva foto</p>
+                    </div>
+                </div>
+                <div class="gallery-item future-photo" data-caption="Más recuerdos 🌟">
+                    <div class="future-placeholder">
+                        <i class="fas fa-heart"></i>
+                        <p>Especial</p>
+                    </div>
+                </div>
+                <div class="gallery-item future-photo" data-caption="Aventuras futuras 🚀">
+                    <div class="future-placeholder">
+                        <i class="fas fa-star"></i>
+                        <p>Próximamente</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>Nuestros recuerdos crecen cada día ❤️</p>
+            <div class="footer-hearts">
+                <i class="fas fa-heart"></i>
+                <i class="fas fa-heart"></i>
+                <i class="fas fa-heart"></i>
+            </div>
+        </div>
+    </footer>
+
+    <script src="memories-script.js"></script>
+</body>
+</html> 

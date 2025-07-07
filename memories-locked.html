@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔒 Recuerdos Bloqueados - Sección Especial</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Fondo animado -->
+    <div class="background-animation">
+        <div class="stars"></div>
+        <div class="twinkling"></div>
+    </div>
+
+    <!-- Navegación -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">🔒</div>
+            <ul class="nav-menu">
+                <li><a href="birthday.html" class="nav-link">Inicio</a></li>
+                <li><a href="index.html" class="nav-link">Contador</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenido principal -->
+    <div class="locked-container">
+        <div class="locked-content">
+            <!-- Icono de candado animado -->
+            <div class="lock-icon-container">
+                <div class="lock-icon">
+                    <i class="fas fa-lock"></i>
+                </div>
+                <div class="lock-glow"></div>
+            </div>
+
+            <!-- Título principal -->
+            <h1 class="locked-title">💕 Sección Especial Bloqueada</h1>
+            
+            <!-- Mensaje principal -->
+            <div class="locked-message">
+                <h2>Nuestros Recuerdos</h2>
+                <p class="main-text">
+                    Esta sección especial se habilitará cuando <span class="highlight">"lo nuestro"</span> inicie.
+                </p>
+                <p class="sub-text">
+                    Aquí guardaremos todos los momentos especiales que compartiremos juntos, 
+                    fotos, recuerdos y aventuras que crearemos como pareja.
+                </p>
+            </div>
+
+            <!-- Elementos decorativos -->
+            <div class="decorative-elements">
+                <div class="floating-heart">💖</div>
+                <div class="floating-star">⭐</div>
+                <div class="floating-heart">💕</div>
+                <div class="floating-star">✨</div>
+                <div class="floating-heart">💝</div>
+            </div>
+
+            <!-- Botón para volver -->
+            <div class="back-button-container">
+                <button class="back-btn" onclick="goBack()">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>Volver al Inicio</span>
+                </button>
+                <p class="back-hint">Mientras tanto, disfruta de tu página especial de cumpleaños</p>
+            </div>
+
+            <!-- Mensaje de esperanza -->
+            <div class="hope-message">
+                <div class="hope-icon">
+                    <i class="fas fa-seedling"></i>
+                </div>
+                <p>Como una semilla que espera florecer, nuestros recuerdos están listos para crecer juntos 🌱</p>
+            </div>
+
+            <!-- Botón para desbloquear sección especial -->
+            <div class="unlock-section-container">
+                <div class="unlock-divider">
+                    <span>¿Lista para desbloquear?</span>
+                </div>
+                <button class="unlock-btn" onclick="unlockSpecialSection()">
+                    <i class="fas fa-unlock-alt"></i>
+                    <span>Desbloquear Sección Especial</span>
+                    <i class="fas fa-heart"></i>
+                </button>
+                <p class="unlock-hint">💕 Haz clic para enviar un mensaje especial</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Efectos de partículas -->
+    <div class="particles"></div>
+
+    <script src="locked-script.js"></script>
+</body>
+</html> 
